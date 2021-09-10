@@ -4,14 +4,15 @@ const helmet = require('helmet')
 const device = require('express-device')
 const useragent = require('express-useragent')
 const sessions = require('./lib/user_session')
-const mongoose = require('mongoose')
-
+const logoutRoute = require('./lib/logout')
+const cors = require('cors')
 const loadFrontend = require('./middlewares/load-frontend')
 const PORT = process.env.PORT || 3000
 
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 // activate helmet--server security
 app.use(
@@ -28,15 +29,9 @@ sessions.startSession(app)
 app.use(device.capture())
 app.use(useragent.express())
 
+app.use(logoutRoute)
 routes(app)
 loadFrontend(app)
-
-const URL =
-  'mongodb+srv://workspaces:workspaces@cluster0.bow5d.mongodb.net/workspaces?retryWrites=true&w=majority'
-mongoose
-  .connect(URL)
-  .then(() => console.log('DB connection successful!!'))
-  .catch(() => console.log('ERROR: DB connection Failed!!'))
 
 app.listen(PORT, () => {
   console.log(

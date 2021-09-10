@@ -1,3 +1,7 @@
+.container {
+  margin: 0 3em;
+}
+
 .wrapper {
   line-height: 1.6;
 }
@@ -15,22 +19,22 @@
 .filter {
   position: relative;
   top: -4rem;
-  left: 71rem;
+  left: 73rem;
   font-weight: 500;
 }
 
-a {
+.a {
   font-size: 1.5rem;
   color: #00b87c !important;
   font-weight: 700;
   text-decoration: underline;
 }
 
-a:link {
+.a:link {
   color: #00b87c;
 }
 
-a:hover {
+.a:hover {
   color: #0be49c;
 }
 
@@ -91,6 +95,10 @@ a:hover {
     position: relative;
     left: 5rem;
     top: 0rem;
+    margin-top: 2em;
+  }
+  .button_group > img {
+    width: 5em;
   }
 
   .previous,
